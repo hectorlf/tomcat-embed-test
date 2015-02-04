@@ -1,0 +1,24 @@
+
+apply plugin: 'java'
+
+tasks.withType(JavaCompile) {
+   options.incremental = true
+}
+
+repositories {
+   mavenCentral()
+}
+
+dependencies {
+   compile 'org.apache.tomcat.embed:tomcat-embed-logging-juli:8.0.18'
+   compile 'org.apache.tomcat.embed:tomcat-embed-jasper:8.0.18'
+}
+
+
+
+
+// Gradle wrapper task
+// Only used when in need to reinstall the wrapper
+task wrapper(type: Wrapper) {
+   gradleVersion = '2.2.1'
+}
