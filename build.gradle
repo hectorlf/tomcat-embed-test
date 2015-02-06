@@ -12,9 +12,17 @@ repositories {
 dependencies {
    compile 'org.apache.tomcat.embed:tomcat-embed-logging-juli:8.0.18'
    compile 'org.apache.tomcat.embed:tomcat-embed-jasper:8.0.18'
+   compile 'org.springframework:springloaded:1.2.1.RELEASE'
 }
 
 
+task run(type: JavaExec, dependsOn: classes) {
+   main = 'test.Bootstrap'
+   def slPath = sourceSets.main.runtimeClasspath.asFileTree.matching({pattern -> pattern.include('**/springloaded-1.2.1.RELEASE.jar')}).singleFile.absolutePath
+   jvmArgs('-javaagent:' + slPath)
+   jvmArgs('-noverify')
+   classpath(sourceSets.main.runtimeClasspath)
+}
 
 
 // Gradle wrapper task
