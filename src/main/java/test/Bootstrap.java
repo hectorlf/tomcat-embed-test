@@ -13,7 +13,7 @@ public class Bootstrap {
 		t.setPort(8123);
 		try {
 			File base = new File(System.getProperty("java.io.tmpdir"));
-			System.out.println("Rott context basedir: " + base.getAbsolutePath());
+			System.out.println("Root context basedir: " + base.getAbsolutePath());
 			Context rootCtx = t.addContext("", base.getAbsolutePath());
 			System.out.println("Tomcat start()");
 			t.start();

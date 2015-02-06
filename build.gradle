@@ -18,7 +18,7 @@ dependencies {
 
 task run(type: JavaExec, dependsOn: classes) {
    main = 'test.Bootstrap'
-   def slPath = sourceSets.main.runtimeClasspath.asFileTree.matching({pattern -> pattern.include('**/springloaded-1.2.1.RELEASE.jar')}).singleFile.absolutePath
+   def slPath = sourceSets.main.runtimeClasspath.asFileTree.matching({pattern -> pattern.include('**/springloaded-*.jar')}).singleFile.absolutePath
    jvmArgs('-javaagent:' + slPath)
    jvmArgs('-noverify')
    classpath(sourceSets.main.runtimeClasspath)
